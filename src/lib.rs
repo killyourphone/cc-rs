@@ -1373,6 +1373,10 @@ impl Build {
             println!("Info: default compiler flags are disabled");
         }
 
+        if target.contains("xtensa") {
+            cmd.push_cc_arg("-mlongcalls".into());
+        }
+
         for arg in envflags {
             cmd.push_cc_arg(arg.into());
         }
